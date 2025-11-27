@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.controlsRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  padding: 0 4px;
+  height: 42px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.stepper button {
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: #1c1f35;
+  font-size: 22px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.stepper button:hover:not(:disabled) {
+  background: #ffffff;
+  opacity: 0.8;
+}
+
+.label {
+  visibility: hidden;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.divider {
+  width: 2px;
+  height: 42px;
+  background: var(--border-color);
+  display: block;
+  margin: 0 2px;
+}
+
+.reset {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: none;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  /* box-shadow: 0 1px 2px rgba(12, 15, 30, 0.08);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease; */
+}
+
+.reset:hover {
+  border-color: #babed1;
+}
+
+.reset:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(58, 91, 197, 0.2);
+}

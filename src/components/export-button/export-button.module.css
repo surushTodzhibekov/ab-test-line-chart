@@ -1,0 +1,24 @@
+.exportContainer {
+  display: none;
+}
+
+.exportButton {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  padding: 0 12px;
+  height: 42px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.exportButton:hover {
+  background-color: transparent;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+}
