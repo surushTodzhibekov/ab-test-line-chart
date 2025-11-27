@@ -233,7 +233,7 @@ MIT
 
 ## 👤 Author
 
-Your Name - [GitHub Profile](https://github.com/yourusername)
+Your Name - [GitHub Profile](https://github.com/surushTodzhibekov)
 
 ---
 
