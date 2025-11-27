@@ -2,7 +2,7 @@
 
 An interactive line chart application for visualizing A/B test conversion rate statistics, built with React, TypeScript, and Recharts.
 
-🔗 **[Live Demo](https://yourusername.github.io/ab-test-line-chart/)** _(Update with your GitHub username)_
+🔗 **[Live Demo](https://surushtodzhibekov.github.io/ab-test-line-chart/)**
 
 ---
 
@@ -174,7 +174,7 @@ The project includes a GitHub Actions workflow that automatically deploys on pus
 
 3. **Wait for deployment**
    - Check Actions tab for deployment status
-   - Site will be live at `https://yourusername.github.io/ab-test-line-chart/`
+   - Site will be live at `https://surushtodzhibekov.github.io/ab-test-line-chart/`
 
 ### Manual Deployment
 
