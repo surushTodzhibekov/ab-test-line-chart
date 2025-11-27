@@ -1,5 +1,6 @@
 import {
   LineChart,
+  ComposedChart,
   Line,
   Area,
   XAxis,
@@ -75,88 +76,91 @@ export const Chart = ({
   // ---------------------------------------------------------------------------
   // render
   // ---------------------------------------------------------------------------
+
+  // Determine if we need ComposedChart (for mixing Lines and Areas)
+  const hasAreaChart = lineStyle === "area";
+  const ChartComponent = hasAreaChart ? ComposedChart : LineChart;
+
   return (
     <div className={styles.container}>
-      {/* --------------------------------------------------------------------------- */}
-      {/* Chart container */}
-      {/* --------------------------------------------------------------------------- */}
+      <div className="chart-container">
+        <ResponsiveContainer width="100%" height={450}>
+          <ChartComponent
+            data={data}
+            margin={{ top: 10, right: 10, left: 0, bottom: 10 }}
+          >
+            {/* --------------------------------------------------------------------------- */}
+            {/* Grid background */}
+            {/* --------------------------------------------------------------------------- */}
 
-      <ResponsiveContainer width="100%" height={450}>
-        <LineChart
-          data={data}
-          margin={{ top: 10, right: 10, left: 0, bottom: 10 }}
-        >
-          {/* --------------------------------------------------------------------------- */}
-          {/* Grid background */}
-          {/* --------------------------------------------------------------------------- */}
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke="#f0f0f0"
+              vertical={false}
+            />
 
-          <CartesianGrid
-            strokeDasharray="3 3"
-            stroke="#f0f0f0"
-            vertical={false}
-          />
+            {/* --------------------------------------------------------------------------- */}
+            {/* X-axis with month labels */}
+            {/* --------------------------------------------------------------------------- */}
 
-          {/* --------------------------------------------------------------------------- */}
-          {/* X-axis with month labels */}
-          {/* --------------------------------------------------------------------------- */}
+            <XAxis
+              dataKey="date"
+              tickFormatter={(value) => formatXAxisLabel(value, timeRange)}
+              stroke="#9ca3af"
+              style={{ fontSize: "12px", fontWeight: 600 }}
+              tick={{ fill: "#6b7280" }}
+              axisLine={{ stroke: "#e5e7eb" }}
+              tickLine={false}
+            />
 
-          <XAxis
-            dataKey="date"
-            tickFormatter={(value) => formatXAxisLabel(value, timeRange)}
-            stroke="#9ca3af"
-            style={{ fontSize: "12px", fontWeight: 600 }}
-            tick={{ fill: "#6b7280" }}
-            axisLine={{ stroke: "#e5e7eb" }}
-            tickLine={false}
-          />
+            {/* --------------------------------------------------------------------------- */}
+            {/* Y-axis with percentage labels */}
+            {/* --------------------------------------------------------------------------- */}
 
-          {/* --------------------------------------------------------------------------- */}
-          {/* Y-axis with percentage labels */}
-          {/* --------------------------------------------------------------------------- */}
+            <YAxis
+              domain={yAxisDomain}
+              tickFormatter={(value) => `${value}%`}
+              stroke="#9ca3af"
+              style={{ fontSize: "12px", fontWeight: 600 }}
+              tick={{ fill: "#6b7280" }}
+              axisLine={{ stroke: "#e5e7eb" }}
+              tickLine={false}
+              width={50}
+            />
 
-          <YAxis
-            domain={yAxisDomain}
-            tickFormatter={(value) => `${value}%`}
-            stroke="#9ca3af"
-            style={{ fontSize: "12px", fontWeight: 600 }}
-            tick={{ fill: "#6b7280" }}
-            axisLine={{ stroke: "#e5e7eb" }}
-            tickLine={false}
-            width={50}
-          />
+            {/* --------------------------------------------------------------------------- */}
+            {/* Custom tooltip  */}
+            {/* --------------------------------------------------------------------------- */}
 
-          {/* --------------------------------------------------------------------------- */}
-          {/* Custom tooltip  */}
-          {/* --------------------------------------------------------------------------- */}
+            <Tooltip
+              content={
+                <ChartTooltip timeRange={timeRange} variations={variations} />
+              }
+              cursor={{
+                stroke: "#d1d5db",
+                strokeWidth: 1,
+                strokeDasharray: "5 5",
+              }}
+            />
 
-          <Tooltip
-            content={
-              <ChartTooltip timeRange={timeRange} variations={variations} />
-            }
-            cursor={{
-              stroke: "#d1d5db",
-              strokeWidth: 1,
-              strokeDasharray: "5 5",
-            }}
-          />
+            {/* --------------------------------------------------------------------------- */}
+            {/* Legend showing line names */}
+            {/* --------------------------------------------------------------------------- */}
 
-          {/* --------------------------------------------------------------------------- */}
-          {/* Legend showing line names */}
-          {/* --------------------------------------------------------------------------- */}
+            <Legend
+              wrapperStyle={{ paddingTop: "24px", fontSize: "13px" }}
+              iconType="line"
+              iconSize={16}
+            />
 
-          <Legend
-            wrapperStyle={{ paddingTop: "24px", fontSize: "13px" }}
-            iconType="line"
-            iconSize={16}
-          />
+            {/* --------------------------------------------------------------------------- */}
+            {/* Render line/area charts based on selected variations and style */}
+            {/* --------------------------------------------------------------------------- */}
 
-          {/* --------------------------------------------------------------------------- */}
-          {/* Render line/area charts based on selected variations and style */}
-          {/* --------------------------------------------------------------------------- */}
-
-          {renderLines()}
-        </LineChart>
-      </ResponsiveContainer>
+            {renderLines()}
+          </ChartComponent>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };

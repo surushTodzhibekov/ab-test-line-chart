@@ -13,10 +13,10 @@ export const ExportButton = () => {
   // functions
   // ---------------------------------------------------------------------------
   async function handleExport() {
-    // Get the chart element by finding the main content area
-    const chartElement = document.querySelector(".main");
+    // Get only the chart container element
+    const chartElement = document.querySelector(".chart-container");
     if (!chartElement) {
-      console.error("Chart element not found");
+      console.error("Chart container not found");
       return;
     }
 
