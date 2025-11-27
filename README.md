@@ -122,7 +122,7 @@ ab-test-line-chart/
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/ab-test-line-chart.git
+   git clone https://github.com/surushTodzhibekov/ab-test-line-chart.git
    cd ab-test-line-chart
    ```
 
